@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<string.h> 
+/*
+桶排序通常用在已知的待排序的数组内，且待排序的数都不太大
+“以空间换时间” 
+*/
+int main()
+{
+	int i, j;
+	int n=6;
+	int a[6]={3,1,6,3,10,7};
+	//a[]最大数为10，需要申请空间大小为10的bukets[]
+	int buckets[11];
+	memset(buckets,0,sizeof(buckets)) ;// 初始化数组
+	for(i=0;i<n;i++)
+	{
+		buckets[a[i]]++;
+	} 
+	//将a[]的数放入buckets中，每放入一个对应buckets加一
+	for(i=0;i<11;i++)//遍历整个buckets数组 
+	{
+		for(j=0;j<buckets[i];j++)//bucket[]内有几次就打印几次 
+		{
+			printf("%d ",i);//将那个数打印出来 
+		}
+	 } 
+	return 0; 
+}
