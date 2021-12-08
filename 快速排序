@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<math.h> 
+void quicksort(int a[],int start,int end);//函数声明 
+int main()
+{	int n=12;
+	int num[12]={10,7,3,12,1,6,3,4,15,2,8,5}; 
+	quicksort(num,0,11);
+	int i;
+	for(i=0;i<12;i++)
+	{
+		printf("%d ",num[i]);
+	}
+	return 0; 
+}
+//下方为快速排序的函数定义 
+void quicksort(int a[],int start,int end)
+{
+	int tmp,i=start,j=end;//tmp为中间变量 
+	int mid=a[(i+j)/2];//将当前数组在中间位置的数定义为基准数 
+	do
+	{	
+		while(a[i]<mid)//在左半部分寻找比中间数大的数
+		{
+			i++; 
+		} 
+		while(a[j]>mid)//在右半部寻找比中间数小的数
+		{
+			j--;
+		}
+		if(i<=j)//找出一组不符合左右区间的数并便交换他们 
+		{
+			tmp=a[j];
+			a[j]=a[i];
+			a[i]=tmp;
+			//交换完毕，继续寻找
+			i++;
+			j--;	
+		}
+	}while(i<=j);
+	/*若未到两个数的边界，意味着还未全部排好序 
+	  此时递归搜索左右区间即可*/
+	  if(j>start)
+	  {
+	  	quicksort(a,start,j);//数组为特殊的指针可以直接代入 
+	  } 
+	  if(i<end)
+	  {
+	  	quicksort(a,i,end);
+	  } 
+} 
