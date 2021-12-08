@@ -1,0 +1,40 @@
+#include<stdio.h>
+/*
+	冒泡排序与桶排序相比占用的空间
+	相当小并且解决了带小数的数组对
+	比但是时间复杂度非常高，是一种
+	非常慢的排序 
+*/
+int main()
+{	bool ok;//布尔型（bool）变量的值只有 真（true) 和假 （false）
+	int i,j,tmp; 
+	int n=6;
+	int a[6]={10,7,3,1,6,3};
+	for(i=0;i<n-1;i++)
+	{	ok=true; //bool一开始为真 
+		for(j=0;j<n-i-1;j++)
+	
+		{
+			if(a[j]>a[j+1]) 
+			{
+				tmp=a[j+1];
+				a[j+1]=a[j];
+				a[j]=tmp;
+				ok=false;//发生交换则为假 
+			}
+		}
+		if(ok==true) {
+				goto out;
+		}
+		/*如果经历一个内循环后，ok没有变成假
+		意味着没发生位置交换，则说明数组排序
+		已经完成，无须再进行冒泡排序 
+		*/ 
+	 } 
+	out:
+	for(i=0;i<6;i++)
+	{
+		printf("%d ",a[i]);
+	 } 
+	return 0; 
+}
