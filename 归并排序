@@ -1,0 +1,26 @@
+#include<stdio.h>
+#define N1 1000
+#define N2 1000
+#define N 2000 
+int main()
+{    	 
+      
+	 int q[N1],n1; scanf("%d",&n1); //第一个数组
+	 for(int i=0;i<n1;i++)  scanf("%d",&q[i]);
+	 int tmp[N2],n2; scanf("%d",&n2); //第二个数组
+	 for(int j=0;j<n2;j++)  scanf("%d",&tmp[j]);
+	 
+	 int s[N],n;//合并后的新数组 
+	 n=n1+n2;
+
+	 int k=0,i=0,j=0;
+	 while(i<n1&&j<n2)
+	      if(q[i]<=tmp[j])  s[k++]=q[i++];
+	      else            s[k++]=tmp[j++];
+	      
+	 while(i<n1) s[k++]=q[i++];
+	 while(j<n2) s[k++]=tmp[j++];
+	 
+	 for(k=0;k<n;k++)
+	 printf("%d ",s[k]);	 
+}
